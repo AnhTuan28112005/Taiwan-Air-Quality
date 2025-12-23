@@ -23,8 +23,9 @@ def plot_diurnal_pattern(
     """
     plt.figure(figsize=figsize)
 
-    for p in pollutants:
-        plt.plot(hourly_avg[hour_col], hourly_avg[p], marker="o", label=p)
+    markers = ['o', 's', '^']
+    for i, p in enumerate(pollutants):
+        plt.plot(hourly_avg[hour_col], hourly_avg[p], marker=markers[i % len(markers)], label=p)
 
         if annotate_min_max:
             max_idx = hourly_avg[p].idxmax()
@@ -56,7 +57,7 @@ def plot_weekly_pattern(
     pollutants: Sequence[str],
     weekday_col: str = "weekday",
     title: str = "Weekly Pattern of Pollutants",
-    xlabel: str = "Day of Week (0=Mon)",
+    xlabel: str = "Day of Week",
     ylabel: str = "Concentration",
     figsize: tuple = (10, 6),
 ) -> None:
@@ -68,6 +69,10 @@ def plot_weekly_pattern(
     ax.set_title(title)
     ax.set_xlabel(xlabel)
     ax.set_ylabel(ylabel)
+    ax.set_xticklabels(['Mon','Tue','Wed','Thu','Fri','Sat','Sun'], rotation=0)
+    ax.legend(title="Pollutant", bbox_to_anchor=(1.05, 1), loc="upper left")
+
+    plt.tight_layout()
     plt.show()
 
 
