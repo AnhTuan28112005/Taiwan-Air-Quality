@@ -222,7 +222,7 @@ conda activate environment
 
 - **Machine Learning**: 
   - scikit-learn 1.3.1  
-  - xgboost 1.7.7  
+  - xgboost 3.1.2  
 
 - **Visualization**: 
   - matplotlib 3.8.0  
