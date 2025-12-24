@@ -197,7 +197,7 @@ cd <project-folder>
 ### Bước 2: Tạo môi trường Conda
 ```bash
 conda env create -f environment.yml
-conda activate min_ds-env
+conda activate environment
 ```
 
 ### Bước 3: Chạy notebook theo thứ tự
@@ -222,7 +222,7 @@ conda activate min_ds-env
 
 - **Machine Learning**: 
   - scikit-learn 1.3.1  
-  - xgboost 1.7.7  
+  - xgboost 3.1.2  
 
 - **Visualization**: 
   - matplotlib 3.8.0  
