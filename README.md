@@ -206,7 +206,7 @@ conda activate environment
 
 - 02_data_preprocessing.ipynb
 
-- 03_Question.ipynb
+- 03_research_question.ipynb
 
 - 04_project_summary.ipynb
 
