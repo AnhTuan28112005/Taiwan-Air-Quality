@@ -235,13 +235,6 @@ conda activate environment
   - ipywidgets 8.1.1  
   - nbdime 3.2.1  
 
-- **Web & Requests**: 
-  - requests 2.31.0  
-  - requests-cache 1.1.1  
-  - beautifulsoup4 4.12.2  
-  - selenium 4.15.2  
-  - lxml 4.9.3  
-
 - **Version Control & Utilities**: 
   - git 2.42.0  
   - pip 23.3  
