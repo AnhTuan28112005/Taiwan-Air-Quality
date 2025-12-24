@@ -197,7 +197,7 @@ cd <project-folder>
 ### Bước 2: Tạo môi trường Conda
 ```bash
 conda env create -f environment.yml
-conda activate min_ds-env
+conda activate environment
 ```
 
 ### Bước 3: Chạy notebook theo thứ tự
