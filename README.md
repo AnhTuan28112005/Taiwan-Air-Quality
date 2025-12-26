@@ -113,6 +113,10 @@ Tiêu chí đánh giá:
 - Xu hướng dài hạn của AQI và PM2.5 trong giai đoạn 2016–2024
 - Chu kỳ lặp lại theo năm và theo tháng
 
+### Q6. Câu hỏi Machine Learning: Dự báo 24 giờ và độ tin cậy
+- Có thể dự báo nồng độ PM2.5 trong 24 giờ tiếp theo với độ chính xác bao nhiêu?  
+- Hiệu suất dự báo thay đổi như thế nào khi mở rộng khung thời gian từ ngắn hạn (1–6 giờ) sang dài hạn (24 giờ)?  
+- Đâu là giới hạn tin cậy của mô hình?
 ---
 
 ## 4. Kết quả chính và ý nghĩa thực tiễn
@@ -165,7 +169,7 @@ Chứa các Jupyter Notebook phục vụ cho quá trình phân tích dữ liệu
 
 - `02_data_preprocessing.ipynb` - Làm sạch dữ liệu, xử lý giá trị thiếu, chuẩn hóa biến và chuẩn bị dữ liệu cho các bước phân tích và mô hình hóa.
 
-- `03_research_question.ipynb` - Trả lời các câu hỏi nghiên cứu đã đề ra, bao gồm phân tích theo thời gian, không gian, vai trò của gió và lựa chọn cảm biến.
+- `03_research_question.ipynb` - Trả lời các câu hỏi nghiên cứu đã đề ra
 
 - `04_project_summary.ipynb` - Tổng hợp kết quả, trình bày các phát hiện chính và rút ra ý nghĩa thực tiễn của dự án.
 

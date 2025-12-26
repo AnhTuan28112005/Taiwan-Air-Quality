@@ -62,22 +62,47 @@ def plot_weekly_pattern(
     figsize: tuple = (10, 6),
 ) -> None:
     """
-    Plot weekly pattern as bar chart (uses pandas DataFrame.plot).
+    Plot weekly pattern as line chart and annotate values at each point.
     weekly_avg: DataFrame has columns [weekday_col] + pollutants
     """
-    ax = weekly_avg.plot(x=weekday_col, y=list(pollutants), kind="bar", figsize=figsize)
-    ax.set_title(title)
-    ax.set_xlabel(xlabel)
-    ax.set_ylabel(ylabel)
-    ax.set_xticklabels(['Mon','Tue','Wed','Thu','Fri','Sat','Sun'], rotation=0)
-    ax.legend(title="Pollutant", bbox_to_anchor=(1.05, 1), loc="upper left")
+    plt.figure(figsize=figsize)
 
+    markers = ['o', 's', '^']
+    for i, p in enumerate(pollutants):
+        plt.plot(
+            weekly_avg[weekday_col],
+            weekly_avg[p],
+            marker=markers[i % len(markers)],
+            label=p
+        )
+
+        # Ghi toàn bộ giá trị
+        for x, y in zip(weekly_avg[weekday_col], weekly_avg[p]):
+            plt.annotate(
+                f"{y:.2f}",
+                (x, y),
+                textcoords="offset points",
+                xytext=(0, 6),
+                ha="center",
+                fontsize=9
+            )
+
+    plt.title(title)
+    plt.xlabel(xlabel)
+    plt.ylabel(ylabel)
+    plt.xticks(
+        weekly_avg[weekday_col],
+        ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
+    )
+    plt.legend()
+    plt.grid(True)
     plt.tight_layout()
     plt.show()
 
 
 def plot_seasonal_pattern(
     season_melted: pd.DataFrame,
+    pollutants: Sequence[str],
     season_col: str = "season",
     value_col: str = "Average_Concentration",
     hue_col: str = "Pollutant",
@@ -89,32 +114,47 @@ def plot_seasonal_pattern(
     palette: Optional[str] = "viridis",
 ) -> None:
     """
-    Plot seasonal pattern from a melted (long-form) DataFrame.
-    season_melted columns: [season_col, hue_col, value_col]
+    Plot seasonal pattern as line chart with all values annotated,
+    in the same style as hourly & weekly plots.
     """
+    season_order = ['Spring', 'Summer', 'Autumn', 'Winter']
+    season_melted[season_col] = pd.Categorical(
+        season_melted[season_col],
+        categories=season_order,
+        ordered=True
+    )
+
+    season_melted = season_melted.sort_values([hue_col, season_col])
     plt.figure(figsize=figsize)
+    markers = ['o', 's', '^']
 
-    if use_seaborn:
-        import seaborn as sns  # import here so seaborn is optional
+    for i, p in enumerate(pollutants):
+        df_p = season_melted[season_melted[hue_col] == p]
 
-        sns.barplot(
-            x=season_col,
-            y=value_col,
-            hue=hue_col,
-            data=season_melted,
-            palette=palette,
+        plt.plot(
+            df_p[season_col],
+            df_p[value_col],
+            marker=markers[i % len(markers)],
+            label=p
         )
-    else:
-        # fallback: matplotlib grouped bar from pivot table
-        pivot = season_melted.pivot(index=season_col, columns=hue_col, values=value_col)
-        pivot.plot(kind="bar", figsize=figsize)
-        plt.xlabel(xlabel)
-        plt.ylabel(ylabel)
+
+        
+        for x, y in zip(df_p[season_col], df_p[value_col]):
+            plt.annotate(
+                f"{y:.2f}",
+                (x, y),
+                textcoords="offset points",
+                xytext=(0, 6),
+                ha="center",
+                fontsize=9
+            )
 
     plt.title(title)
     plt.xlabel(xlabel)
     plt.ylabel(ylabel)
     plt.legend(title=hue_col)
+    plt.grid(True)
+    plt.tight_layout()
     plt.show()
 
 # ==== CÂU 2: Pollution episode duration plots ====
