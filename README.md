@@ -31,9 +31,9 @@ Dự án nhằm phân tích dữ liệu Chỉ số Chất lượng Không khí (
 - Đề xuất chiến lược giám sát và cảnh báo sớm dựa trên dữ liệu
 
 ### Thành viên nhóm
-- Thái Khắc Anh Tuấn – 23120112  
-- Nguyễn Minh Quân – 23120160  
-- Nguyễn Hoàng Minh Trí – 23120179  
+- **Thái Khắc Anh Tuấn    – 23120112**
+- **Nguyễn Minh Quân      – 23120160**  
+- **Nguyễn Hoàng Minh Trí – 23120179**  
 
 ---
 
