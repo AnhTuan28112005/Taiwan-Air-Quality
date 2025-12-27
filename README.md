@@ -231,8 +231,21 @@ cd <project-folder>
 conda env create -f environment.yml
 conda activate environment
 ```
+### Bước 3: Tải dữ liệu
 
-### Bước 3: Chạy notebook theo thứ tự
+Do dữ liệu có dung lượng lớn, dữ liệu **không được lưu trực tiếp trong repository**.
+
+- Truy cập các liên kết Google Drive được cung cấp trong:
+  - `data/raw/link_data_raw.txt`
+  - `data/processed/link_data_processed.txt`
+
+- Tải các file dữ liệu định dạng `.csv` tương ứng
+
+- Lưu dữ liệu vào đúng thư mục:
+  - Dữ liệu thô → `data/raw/`
+  - Dữ liệu đã tiền xử lý → `data/processed/`
+
+### Bước 4: Chạy notebook theo thứ tự
 
 - 01_data_collection_and_exploration.ipynb
 
