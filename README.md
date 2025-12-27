@@ -143,7 +143,12 @@ Tiêu chí đánh giá:
 ## 5. Cấu trúc thư mục
 
 ```bash
-
+project-folder/
+├── data/
+│   ├── raw/
+│   │   └── link_data_raw.txt
+│   └── processed/
+│       └── link_data_processed.txt
 ├── notebooks/
 │   ├── 01_data_collection_and_exploration.ipynb
 │   ├── 02_data_preprocessing.ipynb
@@ -161,6 +166,29 @@ Tiêu chí đánh giá:
 └── README.md
 ```
 Thư mục dự án được tổ chức theo hướng tách biệt rõ ràng giữa **phân tích tương tác (notebooks)** và **mã nguồn tái sử dụng (src)** nhằm đảm bảo tính rõ ràng, dễ bảo trì và thuận tiện cho việc mở rộng.
+
+### data/
+
+Thư mục `data/` chứa các thông tin liên quan đến dữ liệu của dự án.  
+Do dung lượng dữ liệu lớn, các tệp dữ liệu **không được lưu trực tiếp trong repository** mà được cung cấp thông qua **liên kết Google Drive**.
+
+#### raw/
+Chứa thông tin truy cập tới **dữ liệu thô ban đầu**.
+
+- **link_data_raw.txt**  
+  Tệp văn bản chứa đường dẫn Google Drive tới file dữ liệu thô định dạng `.csv`.  
+  Dữ liệu này **chưa qua bất kỳ bước xử lý nào** và được sử dụng cho các bước:
+  - Khám phá dữ liệu ban đầu (EDA)
+  - Phân tích thống kê mô tả
+
+#### processed/
+Chứa thông tin truy cập tới **dữ liệu đã được tiền xử lý**.
+
+- **link_data_processed.txt**  
+  Tệp văn bản chứa đường dẫn Google Drive tới file dữ liệu `.csv` đã được:
+  - Làm sạch
+  - Tiền xử lý  
+  Dữ liệu này sẵn sàng cho các bước **phân tích nâng cao và xây dựng mô hình**.
 
 ### notebooks/
 Chứa các Jupyter Notebook phục vụ cho quá trình phân tích dữ liệu, thử nghiệm và trình bày kết quả theo từng giai đoạn của dự án:
